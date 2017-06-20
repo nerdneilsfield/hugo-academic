@@ -1,3 +1,7 @@
+> Add **course page** and **group**
+
+
+
 # Academic: the personal website framework for [Hugo](https://gohugo.io)
 
 **Academic** is a framework to help you create a beautiful website quickly. Perfect for personal, student, or academic websites. [Check out the latest demo](https://sourcethemes.com/academic/) of what you'll get in less than 10 minutes.

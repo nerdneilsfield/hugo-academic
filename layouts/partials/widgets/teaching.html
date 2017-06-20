@@ -19,21 +19,11 @@
 
   </div>
   <div class="col-xs-12 col-md-8">
-    Hama
  {{ with $page.Content }}<p>{{ . | markdownify }}</p>{{ end }}
-
-    {{ if $page.Params.detailed_list }}
-    {{ range (where $.Data.Pages "Type" "teaching") }}
-    {{ partial "teaching_li" . }}
-    {{ end }}
-    {{ else }}
-    <ul class="fa-ul">
+    <ul>
       {{ range (where $.Data.Pages "Type" "teaching") }}
-      <!--{{ partial "talk_li_simple" . }}-->
-      Gaoyifa
+      {{ partial "teaching_li" . }}
       {{ end }}
     </ul>
-{{ end }}
-
   </div>
 </div>

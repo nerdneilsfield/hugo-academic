@@ -1,0 +1,82 @@
+{{ partial "header.html" . }}
+{{ partial "navbar.html" . }}
+
+{{ $autolink := default true .Params.autolink }}
+
+<article class="article article-project" itemscope itemtype="http://schema.org/Article" style="min-height: 500px">
+<div id="cantaner">
+    <div class="col-xs-12 col-md-4">
+        <table>
+        <caption>ClassInformation</caption>
+        <tr>
+            <td><b>Name<b></td>
+            <td>{{.Params.coursename}}</td>
+        </tr>
+        <tr>
+            <td><b>Code<b></td>
+            <td>{{.Params.coursecode}}</td>
+        </tr>
+        <tr>
+            <td><b>Credit<b></td>
+            <td>{{.Params.credit}}</td>
+        </tr>
+        <tr>
+            <td><b>Seasons<b></td>
+            <td>{{.Params.seasons}}</td>
+        </tr>
+        <tr>
+            <td><b>Year<b></td>
+            <td>{{.Params.year}}</td>
+        </tr>
+        <tr>
+            <td><b>Level<b></td>
+            <td>{{.Params.level}}</td>
+        </tr>
+        <tr>
+            <td><b>Course Time<b></td>
+            <td>
+                <ul>
+                {{ range  .Params.coursetime }}
+                <li>{{ . }}</li>
+                {{end}}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><b>TAs<b></td>
+            <td>
+                <ul>
+                {{ range  .Params.tas }}
+                <li>
+                    {{range .}}
+                        <p>{{.}}</p>
+                    {{end}}
+                </li>
+                {{end}}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Offices Hour<b></td>
+            <td>
+                <ul>
+                {{ range  .Params.officehours }}
+                <li>{{ . }}</li>
+                {{end}}
+                </ul>
+            </td>
+        </tr>
+        </table>
+    </div>
+    <div class="col-xs-12 col-md-8" itemprop="description" style="min-height: 300px">
+
+        {{ .Content }}
+
+    </div>
+  
+</div>
+
+</article>
+</hr>
+{{ partial "footer_container.html" . }}
+{{ partial "footer.html" . }}

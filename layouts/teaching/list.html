@@ -1,0 +1,54 @@
+{{ partial "header.html" . }}
+{{ partial "navbar.html" . }}
+
+{{ partial "header_image.html" . }}
+
+<div class="universal-wrapper">
+
+  {{ with .Title }}<h1>{{ . }}</h1>{{ end }}
+
+  {{ with .Content }}
+  <div class="article-style" itemprop="articleBody">{{ . }}</div>
+  {{ end }}
+
+  {{ $paginator := .Paginate .Data.Pages }}
+  {{ range $paginator.Pages }}
+  <div>
+    {{ if .Params.active }}
+    <h3><a href="{{ .Permalink }}">{{ .Params.coursecode }}</a> :  {{.Params.coursename}}</h3> 
+    <div class="article-metadata">
+    <span class="article-date">
+      ({{.Params.season}}{{.Params.year}})
+    </span>
+    </div>
+    <div class="article-style">
+      {{ if .Params.introduction }}
+      {{ printf "%s" .Params.introduction | markdownify }}
+      {{ else if .Truncated }}
+      {{ printf "%s" .shortintro| markdownify }}
+      {{ end }}
+    </div>
+    {{else}}
+    <h3 style="color: grey;"><a href="{{ .Permalink }}">{{ .Params.coursecode }}</a> :  {{.Params.coursename}}</h3> 
+    <div class="article-metadata" >
+    <span class="article-date">
+      ({{.Params.season}}{{.Params.year}})
+    </span>
+    </div>
+    <div class="article-style" style="color: grey;">
+      {{ if .Params.introduction }}
+      {{ printf "%s" .Params.introduction | markdownify }}
+      {{ else if .Truncated }}
+      {{ printf "%s" .shortintro| markdownify }}
+      {{ end }}
+    </div>
+    {{end }}
+
+  </div>
+  {{ end }}
+
+  {{ partial "pagination" . }}
+
+</div>
+{{ partial "footer_container.html" . }}
+{{ partial "footer.html" . }}
