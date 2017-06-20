@@ -77,6 +77,10 @@
 
 # Filtering
 
+- id: more_information
+  translation: More Information
+
+
 - id: filter_by_type
   translation: Filter by type
 

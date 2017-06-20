@@ -14,6 +14,8 @@
 - id: btn_slides
   translation: 演示文稿
 
+
+
 - id: btn_video
   translation: 视频
 
@@ -46,6 +48,9 @@
 
 - id: more_posts
   translation: 更多文章
+
+- id: more_information
+  translation: 更多信息
 
 # Talks widget
 

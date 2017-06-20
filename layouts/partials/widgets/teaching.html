@@ -1,0 +1,39 @@
+{{ $ := .root }}
+{{ $page := .page }}
+{{ $teachings_len := len (where (where $.Data.Pages "Type" "teaching") ".Params.notonhomepage" nil) }}
+
+<!-- Blog Posts widget -->
+<div class="row">
+  <div class="col-xs-12 col-md-4 section-heading">
+
+    <h1>{{ with $page.Title }}{{ . | markdownify }}{{ end }}</h1>
+    {{ with $page.Params.subtitle }}<p>{{ . | markdownify }}</p>{{ end }}
+    {{ if gt $teachings_len $page.Params.count }}
+    <p class="view-all">
+      <a href="{{ "/teaching/" | relLangURL }}">
+        {{ i18n "more_information" | markdownify }}
+        <i class="fa fa-angle-double-right"></i>
+      </a>
+    </p>
+    {{ end }}
+
+  </div>
+  <div class="col-xs-12 col-md-8">
+    Hama
+ {{ with $page.Content }}<p>{{ . | markdownify }}</p>{{ end }}
+
+    {{ if $page.Params.detailed_list }}
+    {{ range (where $.Data.Pages "Type" "teaching") }}
+    {{ partial "teaching_li" . }}
+    {{ end }}
+    {{ else }}
+    <ul class="fa-ul">
+      {{ range (where $.Data.Pages "Type" "teaching") }}
+      <!--{{ partial "talk_li_simple" . }}-->
+      Gaoyifa
+      {{ end }}
+    </ul>
+{{ end }}
+
+  </div>
+</div>
