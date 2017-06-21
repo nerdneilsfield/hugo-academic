@@ -50,6 +50,106 @@
       {{end}}
     </div>
 
+      <div id="container-projects" class="row isotope">
+      <h3>Ph.D Students:</h3>
+      {{ range $member := where $.Data.Pages "Type" "group" }}
+      {{ if eq $member.Params.type 1 }}
+      {{ $.Scratch.Set "member_url" $member.Permalink }}
+      {{ $.Scratch.Set "target" "" }}
+      {{ if $member.Params.external_link }}
+      {{   $.Scratch.Set "member_url" $member.Params.external_link }}
+      {{   $.Scratch.Set "target" "target=\"_blank\"" }}
+      {{ end }}
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item ">
+        <div class="card">
+           <div id="profile">
+      <div class="portrait" style="background-image: url('{{ $.Site.BaseURL }}img/{{ $member.Params.avatar }}');"></div>
+      <meta itemprop="image" content="{{ $member.Params.avatar }}">
+
+      <div class="portrait-title">
+        <h2 itemprop="name">{{ $member.Params.name }}</h2>
+        <h3 itemprop="jobTitle">{{ $member.Params.role }}</h3>
+        {{ if $member.Params.organization }}
+        <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
+          {{ with $member.Params.organization_url }}<a href="{{ . }}" target="_blank" itemprop="url">{{ end }}
+            <span itemprop="name">{{ $member.Params.organization }}</span>
+          {{ if $member.Params.organization_url }}</a>{{ end }}
+        </h3>
+        {{ end }}
+      </div>
+           </div>
+        </div>
+      </div>
+      {{end}}
+    </div>
+
+      <div id="container-projects" class="row isotope">
+      <h3>Master Students:</h3>
+      {{ range $member := where $.Data.Pages "Type" "group" }}
+      {{ if eq $member.Params.type 2 }}
+      {{ $.Scratch.Set "member_url" $member.Permalink }}
+      {{ $.Scratch.Set "target" "" }}
+      {{ if $member.Params.external_link }}
+      {{   $.Scratch.Set "member_url" $member.Params.external_link }}
+      {{   $.Scratch.Set "target" "target=\"_blank\"" }}
+      {{ end }}
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item ">
+        <div class="card">
+           <div id="profile">
+      <div class="portrait" style="background-image: url('{{ $.Site.BaseURL }}img/{{ $member.Params.avatar }}');"></div>
+      <meta itemprop="image" content="{{ $member.Params.avatar }}">
+
+      <div class="portrait-title">
+        <h2 itemprop="name">{{ $member.Params.name }}</h2>
+        <h3 itemprop="jobTitle">{{ $member.Params.role }}</h3>
+        {{ if $member.Params.organization }}
+        <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
+          {{ with $member.Params.organization_url }}<a href="{{ . }}" target="_blank" itemprop="url">{{ end }}
+            <span itemprop="name">{{ $member.Params.organization }}</span>
+          {{ if $member.Params.organization_url }}</a>{{ end }}
+        </h3>
+        {{ end }}
+      </div>
+           </div>
+        </div>
+      </div>
+      {{end}}
+    </div>
+
+      <div id="container-projects" class="row isotope">
+      <h3>Undergraduate Students:</h3>
+      {{ range $member := where $.Data.Pages "Type" "group" }}
+      {{ if eq $member.Params.type 3 }}
+      {{ $.Scratch.Set "member_url" $member.Permalink }}
+      {{ $.Scratch.Set "target" "" }}
+      {{ if $member.Params.external_link }}
+      {{   $.Scratch.Set "member_url" $member.Params.external_link }}
+      {{   $.Scratch.Set "target" "target=\"_blank\"" }}
+      {{ end }}
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item ">
+        <div class="card">
+           <div id="profile">
+      <div class="portrait" style="background-image: url('{{ $.Site.BaseURL }}img/{{ $member.Params.avatar }}');"></div>
+      <meta itemprop="image" content="{{ $member.Params.avatar }}">
+
+      <div class="portrait-title">
+        <h2 itemprop="name">{{ $member.Params.name }}</h2>
+        <h3 itemprop="jobTitle">{{ $member.Params.role }}</h3>
+        {{ if $member.Params.organization }}
+        <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
+          {{ with $member.Params.organization_url }}<a href="{{ . }}" target="_blank" itemprop="url">{{ end }}
+            <span itemprop="name">{{ $member.Params.organization }}</span>
+          {{ if $member.Params.organization_url }}</a>{{ end }}
+        </h3>
+        {{ end }}
+      </div>
+           </div>
+        </div>
+      </div>
+      {{end}}
+    </div>
+
+
     {{ end }}
 
   </div>
