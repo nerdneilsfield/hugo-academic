@@ -15,13 +15,6 @@
   {{ range $paginator.Pages }}
   <div>
     <h2><a href="{{ .Permalink }}">{{ .Params.name }}</a> :  {{.Params.role}}</h2>
-    <!--<div class="article-style">
-      {{ if .Params.shortintro }}
-      {{ printf "%s" .Params.shortintro | markdownify }}
-      {{ else if .Truncated }}
-      {{ printf "%s" .shortintro| markdownify }}
-      {{ end }}
-    </div>-->
   </div>
   {{ end }}
 
