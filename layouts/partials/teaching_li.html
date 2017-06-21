@@ -1,12 +1,21 @@
 <li>
+ <div>
+  <div>
     {{ if .Params.active }}
-    <p>
-    
-      <a href="{{ .Permalink }}" itemprop="url">{{ .Params.coursecode }}{{ .Params.coursename }}({{.Params.season}}{{.Params.year}})</a>
-    </p>
+    <h3><a href="{{ .Permalink }}">{{ .Params.coursecode }}</a> :  {{.Params.coursename}}</h3> 
+    <div class="article-metadata">
+    <span class="article-date">
+      ({{.Params.season }}{{.Params.year}})
+    </span>
+    </div>
     {{else}}
-    <p style="color: grey">
-      <a href="{{ .Permalink }}" itemprop="url">{{ .Params.coursecode }}{{ .Params.coursename }}({{.Params.season}}{{.Params.year}})</a>
-    <p>
+    <h3 style="color: grey;"><a href="{{ .Permalink }}">{{ .Params.coursecode }}</a> :  {{.Params.coursename}}</h3> 
+    <div class="article-metadata" >
+    <span class="article-date">
+      ({{.Params.season}}{{.Params.year}})
+    </span>
+    </div>
     {{end }}
+
+  </div>
 </li>
