@@ -48,9 +48,7 @@
         </div>
       </div>
       {{end}}
-    </div>
 
-      <div id="container-projects" class="row isotope">
       <h3>Ph.D Students:</h3>
       {{ range $member := where $.Data.Pages "Type" "group" }}
       {{ if eq $member.Params.type 1 }}
@@ -81,9 +79,6 @@
         </div>
       </div>
       {{end}}
-    </div>
-
-      <div id="container-projects" class="row isotope">
       <h3>Master Students:</h3>
       {{ range $member := where $.Data.Pages "Type" "group" }}
       {{ if eq $member.Params.type 2 }}
@@ -114,9 +109,6 @@
         </div>
       </div>
       {{end}}
-    </div>
-
-      <div id="container-projects" class="row isotope">
       <h3>Undergraduate Students:</h3>
       {{ range $member := where $.Data.Pages "Type" "group" }}
       {{ if eq $member.Params.type 3 }}
@@ -148,8 +140,6 @@
       </div>
       {{end}}
     </div>
-
-
     {{ end }}
 
   </div>
