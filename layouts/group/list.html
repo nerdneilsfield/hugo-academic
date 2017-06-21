@@ -14,7 +14,7 @@
   {{ $paginator := .Paginate .Data.Pages }}
   {{ range $paginator.Pages }}
   <div>
-    <h2><a href="{{ .Permalink }}">{{ .Params.name }}</a> :  {{.Params.role}}</h2>
+    <h4><a href="{{ .Permalink }}">{{ .Params.name }}</a> :  {{.Params.role}}</h4>
   </div>
   {{ end }}
 
