@@ -12,10 +12,42 @@
   {{ end }}
 
   {{ $paginator := .Paginate .Data.Pages }}
-  {{ range $paginator.Pages }}
+  {{ $has := $paginator.Pages}}
+
+  <h3>Postdoctoral Researchers:</h3>
+  {{ range  $has  }}
+  {{ if eq .Params.typecode 0}}
   <div>
     <h4><a href="{{ .Permalink }}">{{ .Params.name }}</a> :  {{.Params.role}}</h4>
   </div>
+  {{end}}
+  {{ end }}
+
+  <h3>Ph.D Students:</h3>
+  {{ range  $has  }}
+  {{ if eq .Params.typecode 1}}
+  <div>
+    <h4><a href="{{ .Permalink }}">{{ .Params.name }}</a> :  {{.Params.role}}</h4>
+  </div>
+  {{end}}
+  {{ end }}
+
+  <h3>Master Students:</h3>
+  {{ range  $has  }}
+  {{ if eq .Params.typecode 2}}
+  <div>
+    <h4><a href="{{ .Permalink }}">{{ .Params.name }}</a> :  {{.Params.role}}</h4>
+  </div>
+  {{end}}
+  {{ end }}
+
+  <h3>Undergraduate Students:</h3>
+  {{ range  $has  }}
+  {{ if eq .Params.typecode 3}}0
+  <div>
+    <h4><a href="{{ .Permalink }}">{{ .Params.name }}</a> :  {{.Params.role}}</h4>
+  </div>
+  {{end}}
   {{ end }}
 
   {{ partial "pagination" . }}

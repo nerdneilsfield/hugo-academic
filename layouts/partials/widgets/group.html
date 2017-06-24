@@ -1,12 +1,12 @@
-{{ $ := .root }}
-{{ $page := .page }}
+{{ $ := .root }} 
+{{ $page := .page }} 
 {{ $autolink := default true $page.Params.autolink }}
 
-<!-- Contact widget -->
 <div class="row">
   <div class="col-xs-12 col-md-4 section-heading">
     <h1>{{ with $page.Title }}{{ . | markdownify }}{{ end }}</h1>
-    {{ with $page.Params.subtitle }}<p>{{ . | markdownify }}</p>{{ end }}
+    {{ with $page.Params.subtitle }}
+    <p>{{ . | markdownify }}</p>{{ end }}
     <p class="view-all">
       <a href="{{ "/group/" | relLangURL }}">
         {{ i18n "more_information" | markdownify }}
@@ -14,133 +14,34 @@
       </a>
     </p>
   </div>
- <div class="col-xs-12 col-md-8" itemprop="description" style="text-align:justify;">
-    {{ with $page.Content }}<p>{{ . | markdownify }}</p>{{ end }}
 
+   <div class="col-xs-12 col-md-8" itemprop="description" style="text-align:justify;">
+    {{ with $page.Content }}
+    <p>{{ . | markdownify }}</p>{{ end }}
     <div id="container-projects" class="row isotope">
-      <h3>Postdoctoral Researchers:</h3>
+      <!--<h3>Postdoctoral Researchers:</h3>-->
+      
       {{ range $member := where $.Data.Pages "Type" "group" }}
-      {{ if eq $member.Params.type 0 }}
-      {{ $.Scratch.Set "member_url" $member.Permalink }}
-      {{ $.Scratch.Set "target" "" }}
-      {{ if $member.Params.external_link }}
-      {{   $.Scratch.Set "member_url" $member.Params.external_link }}
-      {{   $.Scratch.Set "target" "target=\"_blank\"" }}
-      {{ end }}
+      {{ $.Scratch.Set "member_url" $member.Permalink }} 
+      {{ $.Scratch.Set "target" "" }} 
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item ">
+        <!--<h3>Postdoctoral Researchers:</h3>-->
         <div class="card">
-           <div id="profile">
-      <div class="portrait" style="background-image: url('{{ $.Site.BaseURL }}img/{{ $member.Params.avatar }}');"></div>
-      <meta itemprop="image" content="{{ $member.Params.avatar }}">
-
-      <div class="portrait-title">
-        <h2 itemprop="name">{{ $member.Params.name }}</h2>
-        <h3 itemprop="jobTitle">{{ $member.Params.role }}</h3>
-        {{ if $member.Params.organization }}
-        <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-          {{ with $member.Params.organization_url }}<a href="{{ . }}" target="_blank" itemprop="url">{{ end }}
-            <span itemprop="name">{{ $member.Params.organization }}</span>
-          {{ if $member.Params.organization_url }}</a>{{ end }}
-        </h3>
-        {{ end }}
-      </div>
-           </div>
+          <div id="profile">
+            <div class="portrait" style="background-image: url('{{ $.Site.BaseURL }}img/{{ $member.Params.avatar }}');"></div>
+            <meta itemprop="image" content="{{ $member.Params.avatar }}">
+            <div class="portrait-title">
+              <h2 itemprop="name"><a href="{{ $member.Permalink }}" target="_blank" itemprop="url">{{ $member.Params.name }}</a></h2>
+              <h3 itemprop="jobTitle">{{ $member.Params.role }}</h3>
+              <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
+              
+            <span itemprop="name">{{ $member.Params.organization }}</span></a>
+              </h3>
+            </div>
+          </div>
         </div>
       </div>
-      {{end}}
-
-      <h3>Ph.D Students:</h3>
-      {{ range $member := where $.Data.Pages "Type" "group" }}
-      {{ if eq $member.Params.type 1 }}
-      {{ $.Scratch.Set "member_url" $member.Permalink }}
-      {{ $.Scratch.Set "target" "" }}
-      {{ if $member.Params.external_link }}
-      {{   $.Scratch.Set "member_url" $member.Params.external_link }}
-      {{   $.Scratch.Set "target" "target=\"_blank\"" }}
+      
       {{ end }}
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item ">
-        <div class="card">
-           <div id="profile">
-      <div class="portrait" style="background-image: url('{{ $.Site.BaseURL }}img/{{ $member.Params.avatar }}');"></div>
-      <meta itemprop="image" content="{{ $member.Params.avatar }}">
-
-      <div class="portrait-title">
-        <h2 itemprop="name">{{ $member.Params.name }}</h2>
-        <h3 itemprop="jobTitle">{{ $member.Params.role }}</h3>
-        {{ if $member.Params.organization }}
-        <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-          {{ with $member.Params.organization_url }}<a href="{{ . }}" target="_blank" itemprop="url">{{ end }}
-            <span itemprop="name">{{ $member.Params.organization }}</span>
-          {{ if $member.Params.organization_url }}</a>{{ end }}
-        </h3>
-        {{ end }}
-      </div>
-           </div>
-        </div>
-      </div>
-      {{end}}
-      <h3>Master Students:</h3>
-      {{ range $member := where $.Data.Pages "Type" "group" }}
-      {{ if eq $member.Params.type 2 }}
-      {{ $.Scratch.Set "member_url" $member.Permalink }}
-      {{ $.Scratch.Set "target" "" }}
-      {{ if $member.Params.external_link }}
-      {{   $.Scratch.Set "member_url" $member.Params.external_link }}
-      {{   $.Scratch.Set "target" "target=\"_blank\"" }}
-      {{ end }}
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item ">
-        <div class="card">
-           <div id="profile">
-      <div class="portrait" style="background-image: url('{{ $.Site.BaseURL }}img/{{ $member.Params.avatar }}');"></div>
-      <meta itemprop="image" content="{{ $member.Params.avatar }}">
-
-      <div class="portrait-title">
-        <h2 itemprop="name">{{ $member.Params.name }}</h2>
-        <h3 itemprop="jobTitle">{{ $member.Params.role }}</h3>
-        {{ if $member.Params.organization }}
-        <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-          {{ with $member.Params.organization_url }}<a href="{{ . }}" target="_blank" itemprop="url">{{ end }}
-            <span itemprop="name">{{ $member.Params.organization }}</span>
-          {{ if $member.Params.organization_url }}</a>{{ end }}
-        </h3>
-        {{ end }}
-      </div>
-           </div>
-        </div>
-      </div>
-      {{end}}
-      <h3>Undergraduate Students:</h3>
-      {{ range $member := where $.Data.Pages "Type" "group" }}
-      {{ if eq $member.Params.type 3 }}
-      {{ $.Scratch.Set "member_url" $member.Permalink }}
-      {{ $.Scratch.Set "target" "" }}
-      {{ if $member.Params.external_link }}
-      {{   $.Scratch.Set "member_url" $member.Params.external_link }}
-      {{   $.Scratch.Set "target" "target=\"_blank\"" }}
-      {{ end }}
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item ">
-        <div class="card">
-           <div id="profile">
-      <div class="portrait" style="background-image: url('{{ $.Site.BaseURL }}img/{{ $member.Params.avatar }}');"></div>
-      <meta itemprop="image" content="{{ $member.Params.avatar }}">
-
-      <div class="portrait-title">
-        <h2 itemprop="name">{{ $member.Params.name }}</h2>
-        <h3 itemprop="jobTitle">{{ $member.Params.role }}</h3>
-        {{ if $member.Params.organization }}
-        <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-          {{ with $member.Params.organization_url }}<a href="{{ . }}" target="_blank" itemprop="url">{{ end }}
-            <span itemprop="name">{{ $member.Params.organization }}</span>
-          {{ if $member.Params.organization_url }}</a>{{ end }}
-        </h3>
-        {{ end }}
-      </div>
-           </div>
-        </div>
-      </div>
-      {{end}}
-    </div>
-    {{ end }}
-
   </div>
 </div>
